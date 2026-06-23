@@ -1,0 +1,9 @@
+
+src/main/resources/application.properties
+
+# Demo Projects
+jpa_withlogs/
+SpringUnitTesting_RestTemplate_Demo/
+ 
+
+insert.sql

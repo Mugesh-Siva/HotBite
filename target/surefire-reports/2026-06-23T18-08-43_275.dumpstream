@@ -1,0 +1,5 @@
+# Created at 2026-06-23T18:08:44.213
+Boot Manifest-JAR contains absolute paths in classpath 'D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\target\test-classes'
+Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
+'other' has different root
+
