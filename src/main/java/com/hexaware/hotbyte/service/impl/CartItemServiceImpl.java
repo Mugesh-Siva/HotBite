@@ -14,6 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,6 +36,9 @@ public class CartItemServiceImpl implements CartItemService {
         log.info("createCartItem called with dto: {}", dto);
         CartItem cartItem = new CartItem();
         cartItem.setQuantity(dto.getQuantity());
+        if (dto.getUnitPrice() != null) {
+            cartItem.setUnitPrice(BigDecimal.valueOf(dto.getUnitPrice()));
+        }
 
         Cart cart = cartRepository.findById(dto.getCartId())
                 .orElseThrow(() -> new CartNotFoundException("Cart not found with ID: " + dto.getCartId()));
@@ -55,6 +59,9 @@ public class CartItemServiceImpl implements CartItemService {
                 .orElseThrow(() -> new CartItemNotFoundException("CartItem not found with ID: " + id));
 
         cartItem.setQuantity(dto.getQuantity());
+        if (dto.getUnitPrice() != null) {
+            cartItem.setUnitPrice(BigDecimal.valueOf(dto.getUnitPrice()));
+        }
 
         Cart cart = cartRepository.findById(dto.getCartId())
                 .orElseThrow(() -> new CartNotFoundException("Cart not found with ID: " + dto.getCartId()));
@@ -97,6 +104,9 @@ public class CartItemServiceImpl implements CartItemService {
         CartItemResponseDTO dto = new CartItemResponseDTO();
         dto.setCartItemId(item.getCartItemId());
         dto.setQuantity(item.getQuantity());
+        if(item.getUnitPrice() != null) {
+            dto.setUnitPrice(item.getUnitPrice().doubleValue());
+        }
         if(item.getCart() != null) dto.setCartId(item.getCart().getCartId());
         if(item.getMenuItem() != null) dto.setMenuItemId(item.getMenuItem().getMenuItemId());
         return dto;

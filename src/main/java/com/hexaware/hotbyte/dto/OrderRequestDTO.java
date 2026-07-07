@@ -31,4 +31,6 @@ public class OrderRequestDTO {
     private String paymentMethod;
     
     private LocalDateTime estimatedDeliveryTime;
+    
+    private String orderStatus;
 }

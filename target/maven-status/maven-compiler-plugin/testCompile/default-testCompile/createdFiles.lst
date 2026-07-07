@@ -1,5 +1,4 @@
 com\hexaware\hotbyte\service\impl\CartServiceImplTest.class
-com\hexaware\hotbyte\HotbyteApplicationTests.class
 com\hexaware\hotbyte\service\impl\RestaurantServiceImplTest.class
 com\hexaware\hotbyte\service\impl\OrderServiceImplTest.class
 com\hexaware\hotbyte\service\impl\UserServiceImplTest.class

@@ -54,4 +54,20 @@ public class MenuItemController {
         menuItemService.deleteMenuItem(id);
         return new ResponseEntity<>("Menu Item deleted successfully", HttpStatus.ACCEPTED);
     }
+
+    @PostMapping("/{id}/images")
+    public ResponseEntity<MenuItemResponseDTO> uploadImages(
+            @PathVariable Integer id,
+            @RequestParam("files") List<org.springframework.web.multipart.MultipartFile> files) {
+        log.info("uploadImages endpoint called with id: {}, files: {}", id, files.size());
+        MenuItemResponseDTO response = menuItemService.uploadImages(id, files);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/images/{imageId}")
+    public ResponseEntity<String> deleteImage(@PathVariable Integer imageId) {
+        log.info("deleteImage endpoint called with imageId: {}", imageId);
+        menuItemService.deleteMenuImage(imageId);
+        return new ResponseEntity<>("Image deleted successfully", HttpStatus.ACCEPTED);
+    }
 }

@@ -1,18 +1,24 @@
 package com.hexaware.hotbyte.service.impl;
 
+import com.hexaware.hotbyte.dto.MenuImageDTO;
 import com.hexaware.hotbyte.dto.MenuItemRequestDTO;
 import com.hexaware.hotbyte.dto.MenuItemResponseDTO;
 import com.hexaware.hotbyte.entity.Category;
+import com.hexaware.hotbyte.entity.MenuImage;
 import com.hexaware.hotbyte.entity.MenuItem;
 import com.hexaware.hotbyte.entity.Restaurant;
 import com.hexaware.hotbyte.repository.CategoryRepository;
+import com.hexaware.hotbyte.repository.MenuImageRepository;
 import com.hexaware.hotbyte.repository.MenuItemRepository;
 import com.hexaware.hotbyte.repository.RestaurantRepository;
+import com.hexaware.hotbyte.service.FileStorageService;
 import com.hexaware.hotbyte.service.MenuItemService;
 import com.hexaware.hotbyte.exception.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -30,6 +36,12 @@ public class MenuItemServiceImpl implements MenuItemService {
 
     @Autowired
     CategoryRepository categoryRepository;
+    
+    @Autowired
+    MenuImageRepository menuImageRepository;
+    
+    @Autowired
+    FileStorageService fileStorageService;
 
     @Override
     public MenuItemResponseDTO createMenuItem(MenuItemRequestDTO dto) {
@@ -110,6 +122,40 @@ public class MenuItemServiceImpl implements MenuItemService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    @Transactional
+    public MenuItemResponseDTO uploadImages(Integer id, List<MultipartFile> files) {
+        log.info("uploadImages called for menuItemId: {}, files count: {}", id, files.size());
+        if (files.size() > 5) {
+            throw new InvalidInputException("Maximum 5 images allowed");
+        }
+        
+        MenuItem menuItem = menuItemRepository.findById(id)
+                .orElseThrow(() -> new MenuItemNotFoundException("Menu Item not found with ID: " + id));
+
+        int order = menuItem.getImages() != null ? menuItem.getImages().size() + 1 : 1;
+        for (MultipartFile file : files) {
+            if (!file.isEmpty()) {
+                String fileUrl = fileStorageService.storeFile(file);
+                MenuImage menuImage = new MenuImage();
+                menuImage.setMenuItem(menuItem);
+                menuImage.setImageUrl(fileUrl);
+                menuImage.setDisplayOrder(order++);
+                menuImageRepository.save(menuImage);
+            }
+        }
+        
+        // Fetch updated item to get images mapped correctly
+        return mapToDTO(menuItemRepository.findById(id).get());
+    }
+
+    @Override
+    @Transactional
+    public void deleteMenuImage(Integer imageId) {
+        log.info("deleteMenuImage called with imageId: {}", imageId);
+        menuImageRepository.deleteById(imageId);
+    }
+
     private MenuItemResponseDTO mapToDTO(MenuItem item) {
         MenuItemResponseDTO dto = new MenuItemResponseDTO();
         dto.setMenuItemId(item.getMenuItemId());
@@ -124,6 +170,18 @@ public class MenuItemServiceImpl implements MenuItemService {
         dto.setIsOutOfStock(item.getIsOutOfStock());
         if (item.getRestaurant() != null) dto.setRestaurantId(item.getRestaurant().getRestaurantId());
         if (item.getCategory() != null) dto.setCategoryId(item.getCategory().getCategoryId());
+        
+        if (item.getImages() != null) {
+            List<MenuImageDTO> imageDTOs = item.getImages().stream().map(img -> {
+                MenuImageDTO imgDto = new MenuImageDTO();
+                imgDto.setImageId(img.getImageId());
+                imgDto.setImageUrl(img.getImageUrl());
+                imgDto.setDisplayOrder(img.getDisplayOrder());
+                return imgDto;
+            }).collect(Collectors.toList());
+            dto.setImages(imageDTOs);
+        }
+        
         return dto;
     }
 }

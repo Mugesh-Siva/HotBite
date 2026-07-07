@@ -11,4 +11,6 @@ public interface MenuItemService {
     void deleteMenuItem(Integer id) throws MenuItemNotFoundException;
     MenuItemResponseDTO getMenuItemById(Integer id) throws MenuItemNotFoundException;
     List<MenuItemResponseDTO> getAllMenuItems();
+    MenuItemResponseDTO uploadImages(Integer id, List<org.springframework.web.multipart.MultipartFile> files) throws MenuItemNotFoundException;
+    void deleteMenuImage(Integer imageId);
 }

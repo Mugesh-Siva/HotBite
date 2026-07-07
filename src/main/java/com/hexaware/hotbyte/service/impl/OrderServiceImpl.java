@@ -43,6 +43,8 @@ public class OrderServiceImpl implements OrderService {
         if (dto.getTotalAmount() != null) order.setTotalAmount(BigDecimal.valueOf(dto.getTotalAmount()));
         order.setPaymentMethod(dto.getPaymentMethod());
         order.setEstimatedDeliveryTime(dto.getEstimatedDeliveryTime());
+        order.setOrderStatus(dto.getOrderStatus() != null ? dto.getOrderStatus() : "Pending");
+        order.setCreatedAt(java.time.LocalDateTime.now());
 
         User user = userRepository.findById(dto.getUserId())
                 .orElseThrow(() -> new UserNotFoundException("User not found with ID: " + dto.getUserId()));
@@ -71,6 +73,9 @@ public class OrderServiceImpl implements OrderService {
         if (dto.getTotalAmount() != null) order.setTotalAmount(BigDecimal.valueOf(dto.getTotalAmount()));
         order.setPaymentMethod(dto.getPaymentMethod());
         order.setEstimatedDeliveryTime(dto.getEstimatedDeliveryTime());
+        if (dto.getOrderStatus() != null) {
+            order.setOrderStatus(dto.getOrderStatus());
+        }
 
         User user = userRepository.findById(dto.getUserId())
                 .orElseThrow(() -> new UserNotFoundException("User not found with ID: " + dto.getUserId()));
@@ -123,6 +128,8 @@ public class OrderServiceImpl implements OrderService {
         if (order.getTotalAmount() != null) dto.setTotalAmount(order.getTotalAmount().doubleValue());
         dto.setPaymentMethod(order.getPaymentMethod());
         dto.setEstimatedDeliveryTime(order.getEstimatedDeliveryTime());
+        dto.setOrderStatus(order.getOrderStatus());
+        dto.setCreatedAt(order.getCreatedAt());
         if(order.getUser() != null) dto.setUserId(order.getUser().getUserId());
         if(order.getRestaurant() != null) dto.setRestaurantId(order.getRestaurant().getRestaurantId());
         if(order.getShippingAddress() != null) dto.setShippingAddressId(order.getShippingAddress().getAddressId());
