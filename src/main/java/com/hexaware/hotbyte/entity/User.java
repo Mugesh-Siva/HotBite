@@ -43,7 +43,7 @@ public class User {
     private LocalDateTime createdAt;
     
     @Column(name = "is_active")
-    private Boolean isActive;
+    private Boolean isActive = true;
     
     @Column(name = "reset_otp")
     private String resetOtp;

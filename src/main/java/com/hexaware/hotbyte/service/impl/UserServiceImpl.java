@@ -110,8 +110,10 @@ public class UserServiceImpl implements UserService {
         dto.setContactNumber(user.getContactNumber());
         dto.setGender(user.getGender());
         dto.setCreatedAt(user.getCreatedAt());
+        dto.setIsActive(user.getIsActive() != null ? user.getIsActive() : true); // Fallback to true if null in DB
         if (user.getRole() != null) {
             dto.setRoleId(user.getRole().getRoleId());
+            dto.setRoleName(user.getRole().getRoleName()); // Added this line for completeness
         }
         return dto;
     }
