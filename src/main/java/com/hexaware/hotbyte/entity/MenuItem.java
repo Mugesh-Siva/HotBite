@@ -56,6 +56,9 @@ public class MenuItem {
     @Column(name = "is_out_of_stock")
     private Boolean isOutOfStock;
 
+    @Column(name = "is_deleted")
+    private Boolean isDeleted = false;
+
     @Column(name = "created_at")
     private LocalDateTime createdAt;
 

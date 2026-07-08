@@ -126,7 +126,7 @@ public class UserServiceImpl implements UserService {
         user.setResetOtpExpiry(java.time.LocalDateTime.now().plusMinutes(10));
         userRepository.save(user);
 
-        String emailBody = "Your OTP for password reset is: " + otp + "\nThis OTP is valid for 10 minutes.";
+        String emailBody = "Hot Bite Online Food Ordering and Delivery App\n Your OTP for password reset is: " + otp + "\nThis OTP is valid for 10 minutes.";
         emailService.sendEmail(user.getEmail(), "Password Reset OTP", emailBody);
         log.info("OTP sent to email: {}", email);
     }
