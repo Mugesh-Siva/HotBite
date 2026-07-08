@@ -1,4 +1,4 @@
-package com.hexaware.hotbyte.service;
+package com.hexaware.hotbyte.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,9 +8,10 @@ import org.springframework.stereotype.Service;
 
 import com.hexaware.hotbyte.entity.User;
 import com.hexaware.hotbyte.repository.UserRepository;
+import com.hexaware.hotbyte.security.UserDetailsImpl;
 
 @Service
-public class UserDetailsServiceImp implements UserDetailsService {
+public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
     UserRepository repo;
@@ -23,6 +24,6 @@ public class UserDetailsServiceImp implements UserDetailsService {
             throw new UsernameNotFoundException(username);
         }
         
-        return new UserDetailsImp(user);
+        return new UserDetailsImpl(user);
     }
 }

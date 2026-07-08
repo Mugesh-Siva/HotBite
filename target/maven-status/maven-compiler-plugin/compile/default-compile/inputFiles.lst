@@ -9,6 +9,7 @@ D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\controller\OrderController.java
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\controller\OrderItemController.java
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\controller\OrderTrackingController.java
+D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\controller\PasswordResetController.java
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\controller\PaymentController.java
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\controller\RestaurantAddressController.java
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\controller\RestaurantController.java
@@ -23,6 +24,7 @@ D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\dto\CartResponseDTO.java
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\dto\CategoryRequestDTO.java
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\dto\CategoryResponseDTO.java
+D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\dto\ForgotPasswordRequest.java
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\dto\MenuImageDTO.java
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\dto\MenuItemRequestDTO.java
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\dto\MenuItemResponseDTO.java
@@ -34,6 +36,7 @@ D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\dto\OrderTrackingResponseDTO.java
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\dto\PaymentRequestDTO.java
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\dto\PaymentResponseDTO.java
+D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\dto\ResetPasswordRequest.java
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\dto\RestaurantAddressRequestDTO.java
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\dto\RestaurantAddressResponseDTO.java
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\dto\RestaurantRequestDTO.java
@@ -44,6 +47,7 @@ D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\dto\UserAddressResponseDTO.java
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\dto\UserRequestDTO.java
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\dto\UserResponseDTO.java
+D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\dto\VerifyOtpRequest.java
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\entity\Cart.java
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\entity\CartItem.java
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\entity\Category.java
@@ -93,9 +97,11 @@ D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\repository\RoleRepository.java
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\repository\UserAddressRepository.java
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\repository\UserRepository.java
+D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\security\UserDetailsImpl.java
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\service\CartItemService.java
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\service\CartService.java
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\service\CategoryService.java
+D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\service\EmailService.java
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\service\FileStorageService.java
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\service\impl\CartItemServiceImpl.java
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\service\impl\CartServiceImpl.java
@@ -109,6 +115,7 @@ D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\service\impl\RestaurantServiceImpl.java
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\service\impl\RoleServiceImpl.java
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\service\impl\UserAddressServiceImpl.java
+D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\service\impl\UserDetailsServiceImpl.java
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\service\impl\UserServiceImpl.java
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\service\MenuItemService.java
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\service\OrderItemService.java
@@ -119,7 +126,5 @@ D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\service\RestaurantService.java
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\service\RoleService.java
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\service\UserAddressService.java
-D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\service\UserDetailsImp.java
-D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\service\UserDetailsServiceImp.java
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\service\UserService.java
 D:\Hexaware_Phase_2_react_springboot\CaseStudyProject\hotbyte\src\main\java\com\hexaware\hotbyte\util\JwtUtil.java

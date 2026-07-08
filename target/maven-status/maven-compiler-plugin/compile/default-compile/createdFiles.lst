@@ -5,13 +5,17 @@ com\hexaware\hotbyte\dto\MenuItemResponseDTO.class
 com\hexaware\hotbyte\config\AppSecurityConfig.class
 com\hexaware\hotbyte\filter\JwtFilter.class
 com\hexaware\hotbyte\controller\CartController.class
+com\hexaware\hotbyte\dto\VerifyOtpRequest.class
 com\hexaware\hotbyte\entity\CartItem.class
 com\hexaware\hotbyte\dto\OrderResponseDTO.class
 com\hexaware\hotbyte\dto\OrderItemRequestDTO.class
+com\hexaware\hotbyte\dto\ResetPasswordRequest.class
 com\hexaware\hotbyte\config\WebConfig.class
 com\hexaware\hotbyte\entity\Role.class
+com\hexaware\hotbyte\controller\PasswordResetController.class
 com\hexaware\hotbyte\repository\CartItemRepository.class
 com\hexaware\hotbyte\dto\MenuImageDTO.class
+com\hexaware\hotbyte\security\UserDetailsImpl.class
 com\hexaware\hotbyte\exception\MenuItemNotFoundException.class
 com\hexaware\hotbyte\controller\RoleController.class
 com\hexaware\hotbyte\service\OrderItemService.class
@@ -22,7 +26,6 @@ com\hexaware\hotbyte\controller\OrderItemController.class
 com\hexaware\hotbyte\exception\OrderNotFoundException.class
 com\hexaware\hotbyte\entity\Order.class
 com\hexaware\hotbyte\entity\OrderTracking.class
-com\hexaware\hotbyte\service\UserDetailsServiceImp.class
 com\hexaware\hotbyte\dto\RoleRequestDTO.class
 com\hexaware\hotbyte\dto\AuthResponse.class
 com\hexaware\hotbyte\controller\UserAddressController.class
@@ -62,7 +65,9 @@ com\hexaware\hotbyte\config\OAuth2LoginSuccessHandler.class
 com\hexaware\hotbyte\exception\InvalidInputException.class
 com\hexaware\hotbyte\dto\OrderTrackingResponseDTO.class
 com\hexaware\hotbyte\exception\RestaurantAddressNotFoundException.class
+com\hexaware\hotbyte\dto\ForgotPasswordRequest.class
 com\hexaware\hotbyte\exception\DuplicateResourceException.class
+com\hexaware\hotbyte\service\EmailService.class
 com\hexaware\hotbyte\service\RestaurantService.class
 com\hexaware\hotbyte\entity\Cart.class
 com\hexaware\hotbyte\service\impl\OrderTrackingServiceImpl.class
@@ -74,7 +79,6 @@ com\hexaware\hotbyte\repository\MenuItemRepository.class
 com\hexaware\hotbyte\controller\RestaurantController.class
 com\hexaware\hotbyte\service\OrderService.class
 com\hexaware\hotbyte\exception\UserAddressNotFoundException.class
-com\hexaware\hotbyte\service\UserDetailsImp.class
 com\hexaware\hotbyte\repository\RestaurantAddressRepository.class
 com\hexaware\hotbyte\dto\UserAddressResponseDTO.class
 com\hexaware\hotbyte\service\RoleService.class
@@ -106,6 +110,7 @@ com\hexaware\hotbyte\repository\OrderItemRepository.class
 com\hexaware\hotbyte\repository\MenuImageRepository.class
 com\hexaware\hotbyte\entity\Payment.class
 com\hexaware\hotbyte\service\OrderTrackingService.class
+com\hexaware\hotbyte\service\impl\UserDetailsServiceImpl.class
 com\hexaware\hotbyte\service\impl\MenuItemServiceImpl.class
 com\hexaware\hotbyte\dto\UserRequestDTO.class
 com\hexaware\hotbyte\entity\MenuItem.class

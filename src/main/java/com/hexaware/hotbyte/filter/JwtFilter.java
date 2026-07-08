@@ -1,6 +1,6 @@
 package com.hexaware.hotbyte.filter;
 
-import com.hexaware.hotbyte.service.UserDetailsServiceImp;
+import com.hexaware.hotbyte.service.impl.UserDetailsServiceImpl;
 import com.hexaware.hotbyte.util.JwtUtil;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -25,7 +25,7 @@ public class JwtFilter extends OncePerRequestFilter {
     private JwtUtil jwtUtil;
 
     @Autowired
-    private UserDetailsServiceImp userDetailsService;
+    private UserDetailsServiceImpl userDetailsService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request,

@@ -4,7 +4,7 @@ import com.hexaware.hotbyte.entity.Role;
 import com.hexaware.hotbyte.entity.User;
 import com.hexaware.hotbyte.repository.RoleRepository;
 import com.hexaware.hotbyte.repository.UserRepository;
-import com.hexaware.hotbyte.service.UserDetailsImp;
+import com.hexaware.hotbyte.security.UserDetailsImpl;
 import com.hexaware.hotbyte.util.JwtUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -61,8 +61,8 @@ public class OAuth2LoginSuccessHandler implements AuthenticationSuccessHandler {
             user = userRepository.save(user);
         }
 
-        UserDetailsImp userDetailsImp = new UserDetailsImp(user);
-        String token = jwtUtil.generateToken(userDetailsImp);
+        UserDetailsImpl UserDetailsImpl = new UserDetailsImpl(user);
+        String token = jwtUtil.generateToken(UserDetailsImpl);
 
         String frontendUrl = "http://localhost:3000/oauth2/callback?token=" + token + "&email=" + email;
         response.sendRedirect(frontendUrl);

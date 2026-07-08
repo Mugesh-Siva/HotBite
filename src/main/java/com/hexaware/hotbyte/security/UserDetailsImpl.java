@@ -1,4 +1,4 @@
-package com.hexaware.hotbyte.service;
+package com.hexaware.hotbyte.security;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -9,11 +9,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.hexaware.hotbyte.entity.User;
 
-public class UserDetailsImp implements UserDetails {
+public class UserDetailsImpl implements UserDetails {
 
     private User user;
 
-    public UserDetailsImp(User user) {
+    public UserDetailsImpl(User user) {
         super();
         this.user = user;
     }

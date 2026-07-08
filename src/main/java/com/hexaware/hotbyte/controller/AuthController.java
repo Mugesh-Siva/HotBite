@@ -3,8 +3,8 @@ package com.hexaware.hotbyte.controller;
 import com.hexaware.hotbyte.dto.*;
 import com.hexaware.hotbyte.entity.User;
 import com.hexaware.hotbyte.repository.UserRepository;
-import com.hexaware.hotbyte.service.UserDetailsImp;
-import com.hexaware.hotbyte.service.UserDetailsServiceImp;
+import com.hexaware.hotbyte.security.UserDetailsImpl;
+import com.hexaware.hotbyte.service.impl.UserDetailsServiceImpl;
 import com.hexaware.hotbyte.service.UserService;
 import com.hexaware.hotbyte.util.JwtUtil;
 import jakarta.validation.Valid;
@@ -33,7 +33,7 @@ public class AuthController {
     private JwtUtil jwtUtil;
 
     @Autowired
-    private UserDetailsServiceImp userDetailsService;
+    private UserDetailsServiceImpl userDetailsService;
 
     @Autowired
     private UserService userService;
@@ -79,8 +79,8 @@ public class AuthController {
                     new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
             );
 
-            UserDetailsImp userDetailsImp = (UserDetailsImp) auth.getPrincipal();
-            String token = jwtUtil.generateToken(userDetailsImp);
+            UserDetailsImpl UserDetailsImpl = (UserDetailsImpl) auth.getPrincipal();
+            String token = jwtUtil.generateToken(UserDetailsImpl);
 
             // Fetch user details from DB for response
             User user = userRepository.findByEmail(request.getEmail()).orElseThrow();
