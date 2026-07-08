@@ -62,7 +62,7 @@ public class MenuItem {
     @OneToMany(mappedBy = "menuItem", cascade = CascadeType.ALL)
     private List<CartItem> cartItems;
 
-    @OneToMany(mappedBy = "menuItem", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
+    @OneToMany(mappedBy = "menuItem", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<OrderItem> orderItems;
 
     @OneToMany(mappedBy = "menuItem", cascade = CascadeType.ALL, orphanRemoval = true)
