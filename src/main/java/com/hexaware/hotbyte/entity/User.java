@@ -44,6 +44,12 @@ public class User {
     
     @Column(name = "is_active")
     private Boolean isActive;
+    
+    @Column(name = "reset_otp")
+    private String resetOtp;
+    
+    @Column(name = "reset_otp_expiry")
+    private LocalDateTime resetOtpExpiry;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<UserAddress> userAddresses;

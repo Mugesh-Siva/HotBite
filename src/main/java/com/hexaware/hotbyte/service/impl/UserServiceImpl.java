@@ -24,6 +24,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     RoleRepository roleRepository;
+    
+    @Autowired
+    com.hexaware.hotbyte.service.EmailService emailService;
 
     @Autowired
     org.springframework.security.crypto.password.PasswordEncoder passwordEncoder;
@@ -111,5 +114,49 @@ public class UserServiceImpl implements UserService {
             dto.setRoleId(user.getRole().getRoleId());
         }
         return dto;
+    }
+
+    @Override
+    public void generateOtpAndSendEmail(String email) throws UserNotFoundException {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UserNotFoundException("User not found with email: " + email));
+
+        String otp = String.format("%06d", new java.util.Random().nextInt(999999));
+        user.setResetOtp(otp);
+        user.setResetOtpExpiry(java.time.LocalDateTime.now().plusMinutes(10));
+        userRepository.save(user);
+
+        String emailBody = "Your OTP for password reset is: " + otp + "\nThis OTP is valid for 10 minutes.";
+        emailService.sendEmail(user.getEmail(), "Password Reset OTP", emailBody);
+        log.info("OTP sent to email: {}", email);
+    }
+
+    @Override
+    public boolean verifyOtp(String email, String otp) throws UserNotFoundException {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UserNotFoundException("User not found with email: " + email));
+
+        if (user.getResetOtp() != null && user.getResetOtp().equals(otp)) {
+            if (user.getResetOtpExpiry() != null && user.getResetOtpExpiry().isAfter(java.time.LocalDateTime.now())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public void resetPassword(String email, String otp, String newPassword) throws UserNotFoundException, InvalidInputException {
+        if (!verifyOtp(email, otp)) {
+            throw new InvalidInputException("Invalid or expired OTP");
+        }
+
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new UserNotFoundException("User not found with email: " + email));
+
+        user.setPasswordHash(passwordEncoder.encode(newPassword));
+        user.setResetOtp(null);
+        user.setResetOtpExpiry(null);
+        userRepository.save(user);
+        log.info("Password reset successful for email: {}", email);
     }
 }
